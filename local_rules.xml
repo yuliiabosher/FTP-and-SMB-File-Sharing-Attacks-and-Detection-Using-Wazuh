@@ -17,3 +17,13 @@
   </rule>
 
 </group>
+
+<group name="ftp,samba">
+
+  <rule id="100007" level="6">
+    <if_sid>11402</if_sid>
+    <match>anon password</match>
+    <description>Anonymous FTP login</description>
+  </rule>
+
+</group>
