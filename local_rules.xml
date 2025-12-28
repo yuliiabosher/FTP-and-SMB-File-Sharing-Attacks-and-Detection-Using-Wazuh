@@ -20,10 +20,20 @@
 
 <group name="ftp,samba">
 
-  <rule id="100007" level="6">
+  <rule id="100107" level="6">
     <if_sid>11402</if_sid>
     <match>anon password</match>
     <description>Anonymous FTP login</description>
+  </rule>
+
+</group>
+
+<group name="ftp,samba,">
+  
+  <rule id="100108" level="12">
+    <if_sid>554</if_sid>
+    <match>.php</match>
+    <description>PHP file upload to SMB share</description>
   </rule>
 
 </group>
