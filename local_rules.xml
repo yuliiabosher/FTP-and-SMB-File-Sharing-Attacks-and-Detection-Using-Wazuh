@@ -57,3 +57,13 @@
   </rule>
 
 </group>
+
+<group name="apache,">
+
+  <rule id="100111" level="13">
+    <if_sid>31108</if_sid>
+    <match>.php</match>
+    <description>HTTP request to a PHP file upload</description>
+  </rule>
+
+</group>
