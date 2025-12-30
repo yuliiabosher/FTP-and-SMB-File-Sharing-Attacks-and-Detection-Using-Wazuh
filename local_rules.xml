@@ -48,12 +48,13 @@
 
 </group>
 
-<group name="ftp,samba,">
+<group name="file_transfer,">
 
-  <rule id="100110" level="5">
+  <rule id="100110" level="12">
     <if_sid>80700</if_sid>
-    <field name="audit.key">smb_read</field>
-    <description>SMB read access</description>
+    <list field="audit.command" lookup="match_key_value" check_value="data_transfer">etc/lists/suspicious-programs</list>
+    <match>/root|/etc</match>
+    <description>Data transfer from protected directories</description>
   </rule>
 
 </group>
@@ -64,6 +65,26 @@
     <if_sid>31108</if_sid>
     <match>.php</match>
     <description>HTTP request to a PHP file upload</description>
+  </rule>
+
+</group>
+
+<group name="file_transfer,">
+
+  <rule id="100112" level="13">
+    <if_sid>80700</if_sid>
+    <field name="audit.key">protected_dir_read</field>
+    <description>Read access to protected directories</description>
+  </rule>
+
+</group>
+
+<group name="file_transfer,">
+
+  <rule id="100113" level="14" frequency="100" timeframe="60">
+    <if_sid>100110</if_sid>
+    <if_matched_sid>100112</if_matched_sid>
+    <description>Large file transfer from protected directories</description>
   </rule>
 
 </group>
