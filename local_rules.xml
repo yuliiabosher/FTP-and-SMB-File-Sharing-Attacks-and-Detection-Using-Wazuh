@@ -88,3 +88,14 @@
   </rule>
 
 </group>
+
+<group name="archive_creation,">
+
+  <rule id="100114" level="14">
+    <if_sid>80700</if_sid>
+    <list field="audit.command" lookup="match_key_value" check_value="archive_creation">etc/lists/suspicious-programs</list>
+    <match>/var/lib/mysql</match>
+    <description>Archive creation of data directory in a shared folder</description>
+  </rule>
+
+</group>
