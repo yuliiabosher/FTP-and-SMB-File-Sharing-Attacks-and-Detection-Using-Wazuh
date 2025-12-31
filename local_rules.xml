@@ -99,3 +99,14 @@
   </rule>
 
 </group>
+
+<group name="ftp,samba">
+
+  <rule id="100115" level="13">
+    <if_sid>11400</if_sid>
+    <match>OK Download|RETR</match>
+    <regex>(\d\d\d\d\d\d\d\d\d*) bytes</regex>
+    <description>Large file download from FTP</description>
+  </rule>
+
+</group>
